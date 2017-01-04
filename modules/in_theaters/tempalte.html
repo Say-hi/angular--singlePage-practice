@@ -3,29 +3,27 @@
     <a ng-repeat="item in data" href="#/" class="list-group-item">
         <div class="media">
             <div class="media-left">
-                <img class="media-object" alt="封神传奇" src="img/1.jpg">
+                <img class="media-object" alt="{{item.title}}" ng-src="{{item.images.medium}}">
             </div>
             <div class="media-body">
-                <span class="badge pull-right">3.3</span>
-                <h3 class="media-heading ">封神传奇</h3>
-                <p>类型：<span>剧情、动作、奇幻</span>&nbsp;&nbsp;&nbsp;&nbsp;上映年份：<span >2016</span></p>
+                <span class="badge pull-right">{{item.rating.average}}</span>
+                <h3 class="media-heading ">{{item.title}}</h3>
+                <p>类型：<span ng-repeat='type in item.genres'>{{type}}{{$last?'':'、'}}</span>&nbsp;&nbsp;&nbsp;&nbsp;上映年份：<span >{{item.year}}</span></p>
                 <p>导演：
-                    <span>许安</span> </p>
+                    <span ng-repeat='directors in item.directors'>{{directors.name}}{{$last?'':'、'}}</span> </p>
                 <p>主演：
-                    <span>李连杰、</span>
-                    <span>范冰冰、</span>
-                    <span>黄晓明</span>
+                    <span ng-repeat='casts in item.casts'>{{casts.name}}{{$last?'':'、'}}</span>
                 </p>
             </div>
         </div>
     </a>
 </div>
 <div>
-    <p>总共：25条记录，第1/5页</p>
+    <p>总共：{{total}}条记录，第{{currentPage}}/{{allPage}}页</p>
     <nav>
         <ul class="pager">
-            <li class="disabled"><a>上一页</a></li>
-            <li class=""><a>下一页</a></li>
+            <li ng-class="{'disabled':currentPage<2}"><a ng-click='pageChange(currentPage-1)'>上一页</a></li>
+            <li ng-class="{'disabled':currentPage>=allPage}"><a ng-click='pageChange(+currentPage+1)'>下一页</a></li>
         </ul>
     </nav>
 </div>
