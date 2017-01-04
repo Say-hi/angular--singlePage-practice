@@ -14,7 +14,7 @@
             }
         }
         // 调用服务
-        httpService.getJSONP('http://api.douban.com/v2/movie/in_theaters',{
+        httpService.getJSONP('http://api.douban.com/v2/movie/'+$routeParams.type,{
             start:($scope.currentPage-1)*$scope.count,
             count:$scope.count,
             apikey:'00fa6c0654689a0202ef4412fd39ce06'
