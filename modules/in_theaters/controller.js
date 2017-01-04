@@ -13,11 +13,14 @@
                 $route.updateParams({page:page});
             }
         }
+        var searchText = $routeParams.q==undefined?"":$routeParams.q;
         // 调用服务
         httpService.getJSONP('http://api.douban.com/v2/movie/'+$routeParams.type,{
             start:($scope.currentPage-1)*$scope.count,
             count:$scope.count,
-            apikey:'00fa6c0654689a0202ef4412fd39ce06'
+            q:searchText,
+            tag:searchText,
+            // apikey:'00fa6c0654689a0202ef4412fd39ce06'
         },function (data) {
             $scope.total=data.total;
             $scope.data=data.subjects;

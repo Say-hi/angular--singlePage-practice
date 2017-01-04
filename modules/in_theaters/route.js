@@ -6,7 +6,7 @@
     var app = angular.module('mainApp.in-theaters.route',['mainApp.in_theaters'])
     app.config(['$routeProvider',function ($routeProvider) {
         $routeProvider
-            .when('/:type/:page?',{
+            .when('/movie/:type/:page?',{
                 templateUrl:'modules/in_theaters/tempalte.html',
                 controller:'in_theatersCtrl'
             })

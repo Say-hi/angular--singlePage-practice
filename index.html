@@ -8,7 +8,6 @@
     <title>Moviecat</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
-
 </head>
 
 <body ng-app="mainApp">
@@ -24,8 +23,8 @@
             <a class="navbar-brand" href="#">Moviecat</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="搜索">
+            <form class="navbar-form navbar-right" ng-submit='search(searchText)' ng-controller='searchCtrl'>
+                <input type="text" class="form-control" placeholder="搜索" ng-model='searchText'>
             </form>
         </div>
     </div>
@@ -34,9 +33,9 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#/in_theaters">正在热映</a></li>
-                <li><a href="#/coming_soon">即将上映</a></li>
-                <li><a href="#/top250">TOP250</a></li>
+                <li><a href="#/movie/in_theaters">正在热映</a></li>
+                <li><a href="#/movie/coming_soon">即将上映</a></li>
+                <li><a href="#/movie/top250">TOP250</a></li>
             </ul>
         </div>
         <!-- 主要的内容区域 -->
@@ -57,4 +56,9 @@
 <!--正在热映模块导入-->
 <script src="modules/in_theaters/controller.js"></script>
 <script src="modules/in_theaters/route.js"></script>
+<!--详情模块导入-->
+<script src="modules/detail/controller.js"></script>
+<script src="modules/detail/route.js"></script>
+<!--搜索模块导入-->
+<script src="modules/search/controller.js"></script>
 </html>
